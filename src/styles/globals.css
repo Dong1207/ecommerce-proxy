@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .site-layout-content {
   min-height: 280px;
   padding: 24px;
@@ -12,4 +16,13 @@
 .ant-row-rtl #components-layout-demo-top .logo {
   float: right;
   margin: 16px 0 16px 24px;
+}
+.page-width {
+  @apply w-[1240px] mx-auto
+}
+.main-menu{
+  @apply sticky top-0 bg-white
+}
+#main-menu .ant-menu-overflow-item.ant-menu-item:first-child{
+  @apply mr-auto
 }

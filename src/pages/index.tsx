@@ -1,16 +1,17 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { useEffect } from 'react';
+import productApi from '../api/productsApi';
+import MainLayout from '@/components/Layout';
 
-const { Header, Content, Footer } = Layout;
 
 export default function Home() {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+
+  useEffect(() => {
+    productApi.getAll()
+      .then(response => console.log(response)); // test axios
+  })
+  
   return (
     <>
       <Head>
@@ -19,34 +20,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={new Array(15).fill(null).map((_, index) => {
-            const key = index + 1;
-            return {
-              key,
-              label: `nav ${key}`,
-            };
-          })}
-        />
-      </Header>
-      <Content style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className="site-layout-content" style={{ background: colorBgContainer }}>
-          Content
+      <MainLayout>
+        <div>
+          Main content here....
         </div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
-    </Layout>
+      </MainLayout>
     </>
   )
 }
