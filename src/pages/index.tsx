@@ -5,13 +5,16 @@ import productApi from '../api/productsApi';
 import MainLayout from '@/components/Layout';
 
 
+type MenuItem = {
+  label: string
+}
 export default function Home() {
 
   useEffect(() => {
     productApi.getAll()
       .then(response => console.log(response)); // test axios
   })
-  
+
   return (
     <>
       <Head>

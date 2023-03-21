@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .site-layout-content {
-  min-height: 280px;
+  min-height: 722px;
   padding: 24px;
 }
 #components-layout-demo-top .logo {
